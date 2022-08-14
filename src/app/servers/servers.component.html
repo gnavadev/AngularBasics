@@ -1,0 +1,29 @@
+<label for="">Server Name</label>   
+<!-- <input type="text" class="form-control"
+(input)="onUpdateServerName($event)"> Event Binding
+<p>{{serverName}}</p> -->
+
+<input type="text" class="form-control"
+[(ngModel)]="serverName"> <!-- Isso ira acontecer no Input Event (Quando eu digito)
+e atualizar o valor da variavel no nosso componente automaticamente
+como eh um Two Way Binding , o valor do input vai ser atualizado caso
+mude o valor da Variavel em si-->
+<!-- <p>{{serverName}}</p> -->
+
+<button class="btn btn-primary" 
+[disabled]="!allowNewServer"
+(click)="onCreateServer()">Add Server</button>
+<p>{{serverCreationStatus}}</p>
+
+<label for="">Username</label>   
+<input type="text" class="form-control"
+[(ngModel)]="username">
+<p>{{username}}</p>
+
+<button class="btn btn-primary" 
+[disabled]="username === ''"
+(click)="resetUsername()">Reset Username</button>
+
+
+<!-- <p>{{allowNewServer}}</p>  -->
+<!-- <p [innerText]="allowNewServer"></p> -->

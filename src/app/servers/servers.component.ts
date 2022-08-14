@@ -8,16 +8,45 @@ import { Component, OnInit } from '@angular/core';
   //Template strings podem ser utilizadas para escrever
   //varias linhas de template, eh recomendado utilizar templateURL
   //linkado ao HTML do componente caso tenha mais de 3 linhas
-  template:` 
-  <app-server></app-server>
-  <app-server></app-server>`,
+  templateUrl: './servers.component.html',
+  // template:` 
+  // <app-server></app-server>
+  // <app-server></app-server>`,
   styleUrls: ['./servers.component.css']
 })
 export class ServersComponent implements OnInit {
+  allowNewServer = false;
+  serverCreationStatus = 'No server was created';
+  serverName = "";
+  username = "";
 
-  constructor() { }
+
+  constructor() { 
+    setTimeout(() => {
+      this.allowNewServer = true;
+    }, 2000);
+  }
 
   ngOnInit(): void {
+    
+  }
+
+  onCreateServer()  {
+
+    this.serverCreationStatus = 'Server was created! Name is ' + this.serverName;
+  }
+
+  onUpdateServerName(event: Event) {
+    this.serverName = (<HTMLInputElement>event.target).value;
+  
+  }
+
+  resetUsername() {
+    console.log(this.username);
+    
+    this.username = "";
+    console.log(this.username);
+    
   }
 
 }

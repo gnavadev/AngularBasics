@@ -1,0 +1,5 @@
+<button class="btn btn-primary" (click)="onDisplaySettings()">Display Details</button>
+<p [hidden]="displaySettings">MEU FI TA DE GUARDA SOL</p>
+<p *ngFor="let values of output; let i = index" 
+[ngStyle]="{backgroundColor: i > 4 ? 'blue' : ''}" 
+[ngClass]="{greaterthan5: i > 4}" > {{values}} </p>

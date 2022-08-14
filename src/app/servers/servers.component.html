@@ -13,17 +13,40 @@ mude o valor da Variavel em si-->
 <button class="btn btn-primary" 
 [disabled]="!allowNewServer"
 (click)="onCreateServer()">Add Server</button>
-<p>{{serverCreationStatus}}</p>
+<p *ngIf="serverCreated">Server was created, server name is {{serverName}}</p>
+<app-server *ngFor="let server of servers"></app-server>
+
+<!-- ngFor = "let qualquernome of propriedade definida no component.ts" -->
+<!-- <p [innerText]="allowNewServer"></p> -->
+<!-- <p>{{serverCreationStatus}}</p> -->
+<!-- serverCreationStatus exemplo de string Interpolation -->
+
+<br>
 
 <label for="">Username</label>   
 <input type="text" class="form-control"
 [(ngModel)]="username">
 <p>{{username}}</p>
+<!-- [(ng model)] exemplo de two-way-binding -->
 
 <button class="btn btn-primary" 
-[disabled]="username === ''"
-(click)="resetUsername()">Reset Username</button>
+[disabled]="!username" 
+(click)="resetUsername()">Reset Username</button> 
+<!-- [disabled] exemplo de property binding
+(click) exemplo de event binding-->
 
 
-<!-- <p>{{allowNewServer}}</p>  -->
-<!-- <p [innerText]="allowNewServer"></p> -->
+
+<button class="btn btn-primary" 
+[disabled]="!username"
+(click)="onCreateServerUsername()">Bind Username</button>
+<p>{{serverUsernameCreationStatus}}</p>
+
+<!--Porque !username funciona, Toda string que esteja vazia, eh considerada
+FALSE, como username recebe uma string vazia em server.component.ts, o valor que estou
+recebendo aqui eh o contrario de FALSE, ou seja, disabled, eh TRUE, assim que
+eu escrevo algo no input, o valor de username passa a ser TRUE por causa
+do two way binding no input, se o valor passou a ser TRUE, isso que dizer que 
+no botao, o valor username eh TRUE, e no botao, como estou negando o valor de
+username, ele passa a ser FALSE, ou seja, disabled eh falso assim que eu digitar 
+algo que altere o valor de username. -->

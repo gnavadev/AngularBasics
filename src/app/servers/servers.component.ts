@@ -17,6 +17,9 @@ import { Component, OnInit } from '@angular/core';
 export class ServersComponent implements OnInit {
   allowNewServer = false;
   serverCreationStatus = 'No server was created';
+  serverUsernameCreationStatus = 'No username was binded to a server';
+  serverCreated = false;
+  servers = ['TestServer', 'TestServer 2'];
   serverName = "";
   username = "";
 
@@ -32,7 +35,8 @@ export class ServersComponent implements OnInit {
   }
 
   onCreateServer()  {
-
+    this.serverCreated = true;
+    this.servers.push(this.serverName);
     this.serverCreationStatus = 'Server was created! Name is ' + this.serverName;
   }
 
@@ -47,6 +51,10 @@ export class ServersComponent implements OnInit {
     this.username = "";
     console.log(this.username);
     
+  }
+
+  onCreateServerUsername () {
+    this.serverUsernameCreationStatus = 'Server ' + this.serverName +' was created! And is binded to ' + this.username;
   }
 
 }
